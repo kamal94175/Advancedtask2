@@ -1,9 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Security.Principal;
-using System.Threading.Tasks;
 using Talent.Common.Auth;
+using Talent.Common.Aws;
 using Talent.Common.Commands;
 using Talent.Common.Contracts;
 using Talent.Common.Mongo;
@@ -13,16 +18,6 @@ using Talent.Common.Services;
 using Talent.Services.Profile.Domain.Contracts;
 using Talent.Services.Profile.Domain.Services;
 using Talent.Services.Profile.Handler;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Talent.Common.Aws;
 
 namespace Talent.Services.Profile
 {
@@ -70,8 +65,10 @@ namespace Talent.Services.Profile
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             Func<IServiceProvider, IPrincipal> getPrincipal =
                      (sp) => sp.GetService<IHttpContextAccessor>().HttpContext.User;
-            services.AddScoped(typeof(Func<IPrincipal>), sp => {
-                Func<IPrincipal> func = () => {
+            services.AddScoped(typeof(Func<IPrincipal>), sp =>
+            {
+                Func<IPrincipal> func = () =>
+                {
                     return getPrincipal(sp);
                 };
                 return func;

@@ -10,15 +10,32 @@ export default class TalentDetail extends React.Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            Details: []
+        }
     }
 
-    //componentDidMount() {
-    //    this.loadData()
-    //}
+    componentDidMount() {
+        this.loadData()
+    }
 
-    //loadData()  url: 'http://localhost:60290/profile/profile/getTalentProfile',
-   
+    loadData() {
+       $.ajax({
+           url: 'https://jsonplaceholder.typicode.com/todos/1',
+            headers: {
+                'Authorization': 'Bearer ' ,
+                'Content-Type': 'application/json'
+            },
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+               success: function (res) {
+                   //this.updateWithoutSave(res.data)
+               }.bind(this)
+       })
+
+    }
     render() {
-        
+        return null;
     }
 }

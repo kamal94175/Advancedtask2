@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Talent.Services.Profile.Models.Profile
 {
     public class EducationPersonListViewModel
     {
-        
+
     }
     public class AddEducationViewModel
     {

@@ -7,7 +7,7 @@ export default class TalentProfile extends React.Component {
                 <div className="content">
                     <div className="center aligned header">Talent name</div>
                     <div className="center aligned description">
-                        <p>Jenny is a student studying Media Management at the New School</p>
+                        <p>Jenny is a student studying Media Management at the New School </p>
                     </div>
                 </div>
                 <div className="extra content">

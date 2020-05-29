@@ -12,7 +12,7 @@ export default class FollowingSuggestion extends React.Component {
                             <img className="ui circular image" src="http://semantic-ui.com/images/avatar/small/jenny.jpg" />
                         </div>
                         <div className="content">
-                            <a className="">Veronika Ossi</a>
+                            <a className="">Veronika Ossi </a>
                             <button className="ui primary basic button"><i className="icon user"></i>Follow</button>
                         </div>
                     </div>

@@ -36,8 +36,17 @@ export default class TalentFeed extends React.Component {
     }
 
     componentDidMount() {
-        //window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('scroll', this.handleScroll);
         this.init()
+    };
+    handleScroll() {
+        const win = $(window);
+        if ((($(document).height() - win.height()) == Math.round(win.scrollTop())) || ($(document).height() - win.height()) - Math.round(win.scrollTop()) == 1) {
+            $("#load-more-loading").show();
+            //load ajax and update states
+
+            //call state and update state;
+        }
     };
 
    
@@ -45,8 +54,30 @@ export default class TalentFeed extends React.Component {
 
         return (
             <BodyWrapper reload={this.init} loaderData={this.state.loaderData}>
-                <div className="ui container">Your code goes here</div>
+                <div className="ui grid container">
+                    <div className="four wide column">
+                        <div className= "ui card">
+                            <CompanyProfile />
+                        </div>
+                    </div>
+                    <div className="eight wide column">
+                             <TalentCard />
+
+                        <p id="load-more-loading">
+                            <img src="/images/rolling.gif" alt="Loading…" />
+                        </p>
+
+                    </div>
+                    <div className="four wide column">
+
+                        <div className="ui card">
+                            <FollowingSuggestion />
+                        </div>
+
+                    </div>
+                </div>
             </BodyWrapper>
+            
         )
     }
 }

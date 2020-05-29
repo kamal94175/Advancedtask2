@@ -27,20 +27,37 @@ namespace Talent.Common.Services
 
         public async Task<string> GetFileURL(string id, FileType type)
         {
-            //Your code here;
-            throw new NotImplementedException();
+            String url = await _awsService.GetStaticUrl(id, "kamal.site");
+            return url;
         }
 
-        public async Task<string> SaveFile(IFormFile file, FileType type)
+        public async Task<string> SaveFile(string fileName, IFormFile file, FileType type)
         {
-            //Your code here;
-            throw new NotImplementedException();
+            if (await _awsService.PutFileToS3(fileName, file.OpenReadStream(), "kamal.site", true))
+            {
+                return fileName;
+            }
+            else
+            {
+                return null;
+            }
+            
+                // TODO return null.
+            //var newFileName = await _awsService.PutFileToS3(fileName, file.OpenReadStream(), "kamal.site", true);
+            //throw new NotImplementedException();
         }
 
         public async Task<bool> DeleteFile(string id, FileType type)
         {
-            //Your code here;
-            throw new NotImplementedException();
+           
+               if(await _awsService.RemoveFileFromS3(id, "kamal.site"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 

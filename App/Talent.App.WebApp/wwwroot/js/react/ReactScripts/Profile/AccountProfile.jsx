@@ -17,11 +17,9 @@ import Experience from './Experience.jsx';
 import { BodyWrapper, loaderData } from '../Layout/BodyWrapper.jsx';
 import { LoggedInNavigation } from '../Layout/LoggedInNavigation.jsx';
 import TalentStatus from './TalentStatus.jsx';
-
 export default class AccountProfile extends React.Component {
     constructor(props) {
         super(props)
-
         this.state = {
             profileData: {
                 address: {},
@@ -44,9 +42,7 @@ export default class AccountProfile extends React.Component {
                 }
             },
             loaderData: loaderData,
-
         }
-
         this.updateWithoutSave = this.updateWithoutSave.bind(this)
         this.updateAndSaveData = this.updateAndSaveData.bind(this)
         this.updateForComponentId = this.updateForComponentId.bind(this)
@@ -54,27 +50,26 @@ export default class AccountProfile extends React.Component {
         this.loadData = this.loadData.bind(this)
         this.init = this.init.bind(this);
     };
-
     init() {
         let loaderData = this.state.loaderData;
         loaderData.allowedUsers.push("Talent");
         loaderData.isLoading = false;
         this.setState({ loaderData, })
     }
-
     componentDidMount() {
         this.loadData();
     }
-
     loadData() {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/getTalentProfile',
+            url: 'http://localhost:60290/Profile/Profile/getTalentProfile',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
             },
             type: "GET",
+            contentType: "application/json",
+            dataType: "json",
             success: function (res) {
                 this.updateWithoutSave(res.data)
             }.bind(this)
@@ -88,19 +83,17 @@ export default class AccountProfile extends React.Component {
             profileData: newProfile
         })
     }
-
     //updates component's state and saves data
     updateAndSaveData(newValues) {
+        console.log("logdata", newValues);
         let newProfile = Object.assign({}, this.state.profileData, newValues)
         this.setState({
             profileData: newProfile
         }, this.saveProfile)
     }
-
     updateForComponentId(componentId, newValues) {
         this.updateAndSaveData(newValues)
     }
-
     saveProfile() {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
@@ -118,7 +111,6 @@ export default class AccountProfile extends React.Component {
                 } else {
                     TalentUtil.notification.show("Profile did not update successfully", "error", null, null)
                 }
-
             }.bind(this),
             error: function (res, a, b) {
                 console.log(res)
@@ -127,7 +119,6 @@ export default class AccountProfile extends React.Component {
             }
         })
     }
-
     render() {
         const profile = {
             firstName: this.state.profileData.firstName,
@@ -151,6 +142,17 @@ export default class AccountProfile extends React.Component {
                                                 linkedAccounts={this.state.profileData.linkedAccounts}
                                                 updateProfileData={this.updateWithoutSave}
                                                 saveProfileData={this.updateAndSaveData}
+                                            />
+                                        </FormItemWrapper>
+                                        <FormItemWrapper
+                                            title='Self Introduction'
+                                            tooltip='Enter your Self Introduction'
+                                        >
+                                            <SelfIntroduction
+                                                summary={this.state.profileData.summary}
+                                                description={this.state.profileData.description}
+                                                updateProfileData={this.updateAndSaveData}
+                                                updateWithoutSave={this.updateWithoutSave}
                                             />
                                         </FormItemWrapper>
                                         <FormItemWrapper
@@ -281,12 +283,7 @@ export default class AccountProfile extends React.Component {
                                                 saveCVUrl={'http://localhost:60290/profile/profile/updateTalentCV'}
                                             />
                                         </FormItemWrapper>
-                                        <SelfIntroduction
-                                            summary={this.state.profileData.summary}
-                                            description={this.state.profileData.description}
-                                            updateProfileData={this.updateAndSaveData}
-                                            updateWithoutSave={this.updateWithoutSave}
-                                        />
+
                                     </div>
                                 </form>
                             </div >

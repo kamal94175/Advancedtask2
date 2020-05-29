@@ -8,7 +8,7 @@ namespace Talent.Common.Contracts
 {
     public interface IFileService
     {
-        Task<string> SaveFile(IFormFile file, FileType type);
+        Task<string> SaveFile(string fileName, IFormFile file, FileType type);
         Task<bool> DeleteFile(string id, FileType type);
         Task<string> GetFileURL(string id, FileType type);
     }

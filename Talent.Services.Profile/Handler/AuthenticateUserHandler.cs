@@ -1,10 +1,8 @@
-﻿using Talent.Common.Commands;
-using Talent.Common.Events;
-using RawRabbit;
+﻿using RawRabbit;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Talent.Common.Commands;
+using Talent.Common.Events;
 
 namespace Talent.Services.Profile.Handler
 {

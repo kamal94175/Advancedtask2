@@ -10,6 +10,7 @@ import AuthenticatingBanner from '../Layout/Banner/AuthenticatingBanner.jsx';
 import { LoggedInNavigation } from '../Layout/LoggedInNavigation.jsx';
 import { IndividualDetailSection, CompanyDetailSection } from './ContactDetail.jsx';
 import { BodyWrapper, loaderData } from '../Layout/BodyWrapper.jsx';
+//import CompanyProfile from '../TalentFeed/CompanyProfile.jsx';
 
 export default class EmployeeProfile extends React.Component {
     constructor(props) {
@@ -175,7 +176,7 @@ export default class EmployeeProfile extends React.Component {
                 TalentUtil.notification.show("Error while saving Employer details", "error", null, null);
             }.bind(this)
         })
-    }
+    }  
 
     render() {
         return (
@@ -207,17 +208,18 @@ export default class EmployeeProfile extends React.Component {
                                                 componentId='companyContact'
                                             />
                                         </FormItemWrapper>
-                                     
+
                                         <FormItemWrapper
-                                            title='Display profile'
-                                            tooltip='Toggle company profile visibility in the employer feed.'
-                                            hideSegment={true}
+                                                title='Display profile'
+                                                tooltip='Toggle company profile visibility in the employer feed.'
+                                                hideSegment={true}
                                         >
-                                            <Toggle
-                                                updateStateData={this.updateWithoutSave}
-                                                displayProfile={this.state.employerData.displayProfile}
-                                            />
+                                             <Toggle
+                                                  updateStateData={this.updateWithoutSave}
+                                                  displayProfile={this.state.employerData.displayProfile}
+                                             />
                                         </FormItemWrapper>
+
                                         <div className="sixteen wide column">
                                             <div>
                                                 <input type="button" className="ui button right floated" onClick={() => window.history.go(-1)} value="Cancel"></input>

@@ -41,7 +41,7 @@ namespace Talent.Api.Domain.Services
             {
                 var talent = await _userRepository.GetByIdAsync(userId);
                                 
-                var fileName = await _fileService.SaveFile(file, FileType.UserVideo);
+                var fileName = await _fileService.SaveFile(file.FileName, file, FileType.UserVideo);
 
                 talent.VideoName = fileName;
                 talent.Videos.Add(new TalentVideo

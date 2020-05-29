@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Talent.Common.Models;
 
 namespace Talent.Services.Profile.Models
@@ -22,6 +20,6 @@ namespace Talent.Services.Profile.Models
         public string Education { get; set; }
         public string CvUrl { get; set; }
         public string VideoUrl { get; set; }
-        public LinkedAccounts LinkedAccounts { get; set; } 
+        public LinkedAccounts LinkedAccounts { get; set; }
     }
 }

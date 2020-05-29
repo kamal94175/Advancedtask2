@@ -2,6 +2,8 @@
 import Cookies from 'js-cookie';
 import { ChildSingleInput } from '../Form/SingleInput.jsx';
 import { Location } from '../Employer/CreateJob/Location.jsx';
+import CompanyProfile from '../TalentFeed/CompanyProfile.jsx';
+
 export class IndividualDetailSection extends Component {
     constructor(props) {
         super(props)
@@ -103,7 +105,7 @@ export class IndividualDetailSection extends Component {
                     label="Phone number"
                     name="phone"
                     value={this.state.newContact.phone}
-                    controlFunc={this.handleChange}
+                    controlFunc={this.handleChange}  
                     maxLength={12}
                     placeholder="Enter a phone number"
                     errorMessage="Please enter a valid phone number"
