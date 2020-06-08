@@ -474,8 +474,7 @@ namespace Talent.Services.Profile.Domain.Services
                          newItem.Name = item.FirstName;  
                          newItem.Visa = item.VisaStatus;
                          newItem.Skills = new List<string>() { "item.Skills" };
-                         
-                        //newItem.Level = new List<string>() { item.Level };
+                         //newItem.Level = new List<string>() { item.Level };
                          newItem.PhotoId = item.ProfilePhotoUrl;
                          newItem.Summary = item.Summary;
              

@@ -1534,6 +1534,7 @@ select.w-auto {
     font-size: 15px;
     font-weight: bold;
     padding: 8px 0 0 6px;
+    border-bottom: 1px solid #eee;
 }
 .star  {
     float: right !important;
@@ -1586,4 +1587,13 @@ select.w-auto {
     padding-top: 10px;
     font-size: .9rem;
     color: #9e9a9a;
+}
+.img-content .description {
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.extra .icon:hover{
+    color : #555;
 }

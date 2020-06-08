@@ -39,7 +39,7 @@ export default class CompanyProfile extends React.Component {
         let getCompanyProfileUrl = this.state.baseUrl + "getEmployerProfile"
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/Profile/Profile/getEmployerProfile',
+            url: 'https://microservicetalent2.azurewebsites.net/Profile/Profile/getEmployerProfile',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
